@@ -10,7 +10,7 @@ foreach ($billets as $billet) {
     }
 } catch(Exception $e){
 $msgErreur = $e->getMessage();
-require 'vueErreur.php';}
+require 'vueerreur.php';}
 require './vueacceuil.php';  
 
 
