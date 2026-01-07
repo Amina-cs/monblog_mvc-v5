@@ -14,11 +14,11 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: mysql-db
+    container_name: mysqlDB
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: mydb
+      MYSQL_DATABASE: monblog
       MYSQL_USER: user
       MYSQL_PASSWORD: pass
     ports:

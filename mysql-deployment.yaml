@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-db
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: ""
+        - name: MYSQL_DATABASE
+          value: "monblog"
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        # Kubernetes va "coller" le contenu du script dans ce dossier spécial de MySQL
+        - name: mysql-initdb
+          mountPath: /docker-entrypoint-initdb.d
+      volumes:
+      - name: mysql-initdb
+        configMap:
+          name: mysql-init-script
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+spec:
+  selector:
+    app: mysql
+  ports:
+    - port: 3306
