@@ -1,6 +1,6 @@
 <?php
 require
-'Modele.php';
+'modele.php';
 try{
 $billets =
 getBillets();
