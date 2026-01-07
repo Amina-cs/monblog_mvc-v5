@@ -3,7 +3,7 @@
 // Instancie et renvoie l'objet PDO associé
 function getBdd() {
     $bdd = new PDO('mysql:host=db;dbname=monblog;charset=utf8', 'root',
-            '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     return $bdd;
 }
 
